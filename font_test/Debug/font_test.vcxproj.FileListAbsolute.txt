@@ -1,0 +1,2 @@
+F:\MY_CODE\Python\py_font\font_test\Debug\font_test.exe
+F:\MY_CODE\Python\py_font\font_test\Debug\font_test.pdb
