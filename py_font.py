@@ -50,7 +50,7 @@ def font_init(fzise=DEF_FONT_SIZE, font=DEF_FONT_SRC, fstart=DEF_FONT_START, fen
 
 def font_get_path(fname, fext, path, dir):
     fpath = _filepath = os.path.join(path, dir)
-    fname = filename = "{0}.{1}".format(fname, fext)
+    fname = "{0}.{1}".format(fname, fext)
     fullpath = os.path.join(fpath, fname)
     if os.path.exists(fpath) != True:
         os.makedirs(fpath)  # 如果指定的文件夹不存在就递归创建
@@ -119,7 +119,7 @@ def font_to_image(fcode, savefp=False):
     return image
 
 
-def image_to_bytes(image):
+def image_to_bytes(image, debug=False):
     global G_FONT_SIZE
     global G_FONT_SRC
     global G_FONT_START
@@ -147,10 +147,13 @@ def image_to_bytes(image):
             col = image.getpixel((x, y))
             if col == 0:
                 byten = byten | 1
-                print("*", end="")
+                if debug == True:
+                    print("*", end="")
             else:
-                print(" ", end="")
-        print("")
+                if debug == True:
+                    print(" ", end="")
+        if debug == True:
+            print("")
         byte_arry[bytei] = byten
         bytei += 1
         byten = 0
@@ -191,19 +194,19 @@ def font_convert_bin(ffile, save_image=False):
 
     for fcode in range(int(G_FONT_START), int(G_FONT_END) + 1):
         image = font_to_image(fcode, save_image)
-        byte_arry = image_to_bytes(image)
+        byte_arry = image_to_bytes(image, save_image)
         # print("byte_arry:", byte_arry)
         ffile.write(byte_arry)
 
 
 if __name__ == "__main__":
 
-    font_init()
+    font_init(font=FONT_LIST[2])
     font_path = G_PATH_BASE
     font_dir = "{0}-{1}".format(G_FONT_SRC, G_FONT_SIZE)
     font_image = "{0}-{1}".format(G_FONT_SRC, G_FONT_SIZE)
     font_name = font_get_path(font_image, 'bin', font_path, font_dir)
     font_file = open(font_name, "wb")
     font_write_header(font_file)
-    font_convert_bin(font_file, True)
+    font_convert_bin(font_file, False)
     font_file.close()
