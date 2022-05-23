@@ -19,8 +19,8 @@ FONT_LIST = [
     "stxingkai.ttf",  # 行楷
 ]
 
-DEF_FONT_SIZE = 64
-DEF_FONT_SRC = "msyh.ttc"
+DEF_FONT_SIZE = 32
+DEF_FONT_SRC = "simsun.ttc"
 DEF_FONT_START = 0x4E00
 DEF_FONT_END = 0x9FA5
 
@@ -201,7 +201,7 @@ def font_convert_bin(ffile, save_image=False):
 
 if __name__ == "__main__":
 
-    font_init(font=FONT_LIST[2])
+    font_init()
     font_path = G_PATH_BASE
     font_dir = "{0}-{1}".format(G_FONT_SRC, G_FONT_SIZE)
     font_image = "{0}-{1}".format(G_FONT_SRC, G_FONT_SIZE)
