@@ -1,3 +1,5 @@
+# encoding='utf-8'
+from functools import cache
 import io
 import sys
 import re
@@ -10,12 +12,12 @@ import numpy as np
 
 FONT_TEST_STR = "我的祖国繁荣昌盛"
 
-FONT_BIN_FILE = "simsun.ttc-32.bin"
+FONT_BIN_FILE = "simsun.ttc-16.bin"
 
 FONT_WIDTH = 32
 FONT_HEIGHT = 32
 FONT_START_CODE = 0x4E00
-FONT_END_CODE = 0x9FA5
+FONT_END_CODE = 0x9FFF
 
 FONT_WIDTH_B = math.ceil(FONT_WIDTH / 8)
 
@@ -119,12 +121,13 @@ def show_font_byte(fbuff):
                     print(" ", end="")
         print("")
 
-
+import encodings
 if __name__ == "__main__":
     if read_font_header() != True:
         print("font header error")
         exit(0)
 
+    # FONT_TEST_BYTE = []
     # print("Font Test: {0}".format(FONT_TEST_STR))
     # for s in FONT_TEST_STR:
     #     FONT_TEST_BYTE.append(ord(s))
@@ -134,8 +137,15 @@ if __name__ == "__main__":
     # print(FONT_TEST_BYTE)
 
     findex = 0
+    fstring = ''
     for fcode in FONT_TEST_BYTE:
-        print("============================== idx[%d] code[%X] chr[%s] ==============================" % (findex, fcode, chr(fcode)))
+        try:
+            fbytes = fcode.to_bytes(2, byteorder='big')
+            fstring = fbytes.decode('utf-16-be')
+            print("============================== idx[%d] code[%X] chr[%s] ==============================" % (findex, fcode, fstring))
+        except:
+            fstring = 'XX'
+            print("============================== idx[%d] code[%X] chr[%s] ==============================" % (findex, fcode, fstring))
         fbuff = read_font_buff(fcode)
         show_font_byte(fbuff)
         findex = findex + 1

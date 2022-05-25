@@ -1,4 +1,4 @@
-#encoding: utf-8
+# coding=utf-8
 import sys
 import re
 import time
@@ -19,10 +19,12 @@ FONT_LIST = [
     "stxingkai.ttf",  # 行楷
 ]
 
-DEF_FONT_SIZE = 32
+DEF_FONT_SIZE = 16
 DEF_FONT_SRC = "simsun.ttc"
+
+# [汉字 Unicode 编码范围](https://www.qqxiuzi.cn/zh/hanzi-unicode-bianma.php)
 DEF_FONT_START = 0x4E00
-DEF_FONT_END = 0x9FA5
+DEF_FONT_END = 0x9FFF
 
 G_FONT_SIZE = 64
 G_FONT_SRC = "msyh.ttc"
