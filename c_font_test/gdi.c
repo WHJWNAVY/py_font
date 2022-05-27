@@ -631,6 +631,11 @@ int32 gdi_hzk_offset(const int8 *hz)
         return ERROR;
     }
 
+    if ((*((uint16 *)hz) < HZK.start) || (*((uint16 *)hz) > HZK.end))
+    {
+        return ERROR;
+    }
+
     word = *((uint16 *)hz);
     size = ((HZK.width / 8) * HZK.height);
     offset += sizeof(hzk_t);

@@ -121,7 +121,7 @@ def show_font_byte(fbuff):
                     print(" ", end="")
         print("")
 
-import encodings
+
 if __name__ == "__main__":
     if read_font_header() != True:
         print("font header error")
