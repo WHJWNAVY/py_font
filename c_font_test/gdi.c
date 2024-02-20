@@ -47,8 +47,8 @@ typedef enum _gdi_col
  */
 void gdi_update(void)
 {
-    int8 x = 0, y = 0;
-    system("cls");
+    int32 x = 0, y = 0;
+    system("clear");
 #ifdef CONFIG_USE_PRTLOG
     fseek(fpPRTLOG, 0, SEEK_SET);
 #endif
@@ -105,7 +105,7 @@ void gdi_update(void)
 void gdi_clear(int32 colour)
 {
     int32 x = 0, y = 0;
-    int8 col = 0;
+    int32 col = 0;
 
     col = (colour) ? (COL_BLACK) : (COL_WHITE);
 
@@ -857,7 +857,7 @@ int32 gdi_roll_on(uint8 rollon)
 int32 gdi_init(void)
 {
     gdi_set_orientation(0);
-    if (gdi_hzk_load(CONFIG_HZK16_PATH) != OK)
+    if (gdi_hzk_load(CONFIG_DEFHZK_PATH) != OK)
     {
         return ERROR;
     }

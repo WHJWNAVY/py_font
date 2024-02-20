@@ -6,12 +6,14 @@
 // #define CONFIG_USE_ROLL       1//使用滚屏功能
 #define CONFIG_USE_PRTLOG       1//使用写入到文件功能
 #define CONFIG_HZK16_PATH       "simsun.ttc-16.bin"
-#define CONFIG_HZK64_PATH       "HZK64"
+#define CONFIG_HZK32_PATH       "simsun.ttc-32.bin"
+#define CONFIG_HZK64_PATH       "simsun.ttc-64.bin"// "HZK64"
+#define CONFIG_DEFHZK_PATH      (CONFIG_HZK64_PATH)
 #define CONFIG_PRTLOG_PATH      "Screen.log"
 
 // Size
-#define	SCREEN_X     64
-#define	SCREEN_Y     32
+#define	SCREEN_X     256
+#define	SCREEN_Y     128
 extern void   gdi_update(void);
 extern void   gdi_get_screen_size(int32 *x, int32 *y);
 extern void   gdi_set_orientation(int32 orientation);
