@@ -2,8 +2,9 @@
 python写的点阵字库生成器, dot matrix font by python
 
 * [py_cont.py](py_cont.py): 点阵字库制作程序, font create
-* [py_font_test.py](py_font_test/py_font_test.py): 字库测试程序, font test
-
+* [py_font_code.py](py_font_code.py): 打印所有UTF8点阵字库编码, print font encode
+* [py_font_test](py_font_test/py_font_test.py): 字库测试程序(Python版), font test in python
+* [c_font_test](py_font_test/main.c): 字库测试程序(C版), font test in c
 
 > [Pygame-API-Font](https://www.pygame.org/docs/ref/font.html)
 
